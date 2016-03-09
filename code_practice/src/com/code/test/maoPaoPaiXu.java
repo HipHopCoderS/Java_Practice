@@ -4,37 +4,44 @@ import java.awt.*;
 
 /**
  * Created by HipHopCoder
+ *
+ * for 两层循环
+ * 内层循环 分别与每个值比较一次,得到一个泡泡
+ *
+ * 外层循环 根据list 的长度,看最终会有几个泡泡冒出来
+ *
  */
 public class maoPaoPaiXu {
 
 
-    public void maomap1(int[] testList){
+    public void maomap1(int[] list){
 
-        int  lenList = testList.length;
+        for(int i=0;i<list.length-1;i++){
+            for(int j=0;j<list.length-1-i;j++){
 
-
-        for(int i =1;i<=lenList-1;i++){
-            for(int j=1;j<=lenList-i;j++){
-                if(testList[i]>testList[j]){
-                    int value = testList[j];
-                    testList[j]=testList[i];
-                    testList[i]=value;
-
+                if(list[j]>list[j+1]){
+                    int value = list[j+1];
+                    list[j+1] = list[j];
+                    list[j] = value;
                 }
-
-            }
-            for(int k=0;k<=lenList;k++){
-                System.out.println(testList[k]);
             }
 
+            for (int x:list
+                    ) {
+                System.out.print(x+"\t");
+            }
+            System.out.print("\n");
         }
+
+
+
 
     }
 
 
     public static void main(String[] args) {
 
-       int[] testList = {88,33,22,11};
+       int[] testList = {8,43,22,11,5};
 
 
        maoPaoPaiXu mp = new maoPaoPaiXu();
